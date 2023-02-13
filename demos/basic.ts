@@ -42,11 +42,11 @@ while (customerDemands.length < 100 && totalCapacity < totalVehicleCapacity) {
 const deliveryService = new DeliveryService(vehicles, customerDemands)
 const deliveryPlan = deliveryService.optimizeDeliveryPlan()
 console.log(`Pending demands: ${deliveryPlan.pendingDemands.length}`)
-
+console.log('---------------------------')
 const routes = deliveryPlan.vehicleRoutes
 routes.forEach((route, vehicle) => {
   console.log(`Vehicle ${vehicle.driverId}`)
-  console.log(`Capacity: ${vehicle.capacity}`)
+  console.log(`Remaining capacity: ${vehicle.capacity}`)
   console.log(`Current position: (${vehicle.currentPosition.latitude}, ${vehicle.currentPosition.longitude})`)
   console.log('Route:')
 

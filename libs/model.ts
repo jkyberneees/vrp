@@ -1,8 +1,7 @@
 export class Position {
   constructor (
     public readonly latitude: number,
-    public readonly longitude: number,
-    public readonly weight: number = 1
+    public readonly longitude: number
   ) {
   }
 
@@ -23,13 +22,15 @@ export class Position {
   }
 }
 
-export class CustomerDemand {
+export class DeliveryOrder {
   constructor (
-    public readonly customerID: string,
+    public readonly customerId: string,
+    public readonly orderId: string,
+
     public readonly capacity: number,
     public readonly location: Position,
-    public readonly orderId: string,
-    public readonly dateTime: Date
+    public readonly dateTime: Date,
+    public readonly weight: number = 1
   ) {
   }
 }
@@ -38,7 +39,7 @@ export class Vehicle {
   private _capacity: number
   private _currentPosition: Position
 
-  constructor (capacity: number, currentPosition: Position, public readonly driverId: string) {
+  constructor (public readonly driverId: string, capacity: number, currentPosition: Position) {
     this._capacity = capacity
     this._currentPosition = currentPosition
   }
@@ -62,8 +63,8 @@ export class Vehicle {
 
 export class DeliveryPlan {
   constructor (
-    public readonly vehicleRoutes: Map<Vehicle, CustomerDemand[]>,
-    public readonly pendingDemands: CustomerDemand[]
+    public readonly vehicleRoutes: Map<Vehicle, DeliveryOrder[]>,
+    public readonly pendingOrders: DeliveryOrder[]
   ) {
   }
 }

@@ -3,11 +3,11 @@ import { Vehicle, Position, CustomerDemand } from './../libs/model'
 import { FeatureCollection } from 'geojson'
 
 const vehicles = [
-  new Vehicle(100, new Position(52.5075, 13.3295), 'Vehicle1'),
-  new Vehicle(120, new Position(52.5065, 13.3299), 'Vehicle2'),
-  new Vehicle(80, new Position(52.5057, 13.3304), 'Vehicle3'),
-  new Vehicle(90, new Position(52.5055, 13.3307), 'Vehicle4'),
-  new Vehicle(110, new Position(52.5047, 13.3311), 'Vehicle5')
+  new Vehicle(100, new Position(52.5075, 13.3295), 'Driver1'),
+  new Vehicle(120, new Position(52.5065, 13.3299), 'Driver2'),
+  new Vehicle(80, new Position(52.5057, 13.3304), 'Driver3'),
+  new Vehicle(90, new Position(52.5055, 13.3307), 'Driver4'),
+  new Vehicle(110, new Position(52.5047, 13.3311), 'Driver5')
 ]
 
 let totalVehicleCapacity = 0

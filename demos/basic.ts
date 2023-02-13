@@ -45,13 +45,13 @@ console.log(`Pending demands: ${deliveryPlan.pendingDemands.length}`)
 console.log('---------------------------')
 const routes = deliveryPlan.vehicleRoutes
 routes.forEach((route, vehicle) => {
-  console.log(`Vehicle ${vehicle.driverId}`)
+  console.log(`Vehicle driver: ${vehicle.driverId}`)
   console.log(`Remaining capacity: ${vehicle.capacity}`)
   console.log(`Current position: (${vehicle.currentPosition.latitude}, ${vehicle.currentPosition.longitude})`)
   console.log('Route:')
 
   const featureCollection: FeatureCollection = generateGeoJsonRoute(route.map(route => route.location))
-  console.log(JSON.stringify(featureCollection))
+  console.log(JSON.stringify(featureCollection, null, 2))
 
   console.log('---------------------------')
 })

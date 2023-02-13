@@ -12,7 +12,7 @@ const vehicles = [
 
 let totalVehicleCapacity = 0
 vehicles.forEach(vehicle => {
-  totalVehicleCapacity += vehicle.getCapacity()
+  totalVehicleCapacity += vehicle.capacity
 })
 
 const customerDemands = []
@@ -45,12 +45,12 @@ console.log(`Pending demands: ${deliveryPlan.pendingDemands.length}`)
 
 const routes = deliveryPlan.vehicleRoutes
 routes.forEach((route, vehicle) => {
-  console.log(`Vehicle ${vehicle.getDriverId()}`)
-  console.log(`Capacity: ${vehicle.getCapacity()}`)
-  console.log(`Current position: (${vehicle.getCurrentPosition().latitude}, ${vehicle.getCurrentPosition().longitude})`)
+  console.log(`Vehicle ${vehicle.driverId}`)
+  console.log(`Capacity: ${vehicle.capacity}`)
+  console.log(`Current position: (${vehicle.currentPosition.latitude}, ${vehicle.currentPosition.longitude})`)
   console.log('Route:')
 
-  const featureCollection: FeatureCollection = generateGeoJsonRoute(route.map(route => route.getLocation()))
+  const featureCollection: FeatureCollection = generateGeoJsonRoute(route.map(route => route.location))
   console.log(JSON.stringify(featureCollection))
 
   console.log('---------------------------')

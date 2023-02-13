@@ -37,43 +37,42 @@ export function generateGeoJsonRoute (positions: Position[]): FeatureCollection 
 }
 
 export class DeliveryService {
-  private readonly vehicles: Vehicle[]
-  private readonly customerDemands: CustomerDemand[]
-
-  constructor (vehicles: Vehicle[], customerDemands: CustomerDemand[]) {
-    this.vehicles = vehicles
-    this.customerDemands = customerDemands
+  constructor (
+    private readonly vehicles: Vehicle[],
+    private readonly customerDemands: CustomerDemand[]
+  ) {
   }
 
   public optimizeDeliveryPlan (): DeliveryPlan {
     // Sort customer demands by increasing demand capacity
     // We also consider the weight linked to the customer location
     // (weight = placeholder for conditions around Traffic, Weather, Road, etc...)
-    this.customerDemands.sort((a, b) => a.getCapacity() * a.getLocation().weight - b.getCapacity() * a.getLocation().weight)
+    this.customerDemands.sort((a, b) => a.capacity * a.location.weight - b.capacity * a.location.weight)
 
     // Sort vehicles by increasing current position to customer demand location distance
     this.vehicles.sort((a, b) => {
-      const distanceA = a.getCurrentPosition().distanceTo(this.customerDemands[0].getLocation())
-      const distanceB = b.getCurrentPosition().distanceTo(this.customerDemands[0].getLocation())
+      const distanceA = a.currentPosition.distanceTo(this.customerDemands[0].location)
+      const distanceB = b.currentPosition.distanceTo(this.customerDemands[0].location)
+
       return distanceA - distanceB
     })
 
     const vehicleRoutes = new VehicleRoutes()
 
     // Assign customer demands to vehicles
-    let dIndex = 0
-    for (; dIndex < this.customerDemands.length; dIndex++) {
-      const demand = this.customerDemands[dIndex]
+    let demandIndex = 0
+    for (; demandIndex < this.customerDemands.length; demandIndex++) {
+      const demand = this.customerDemands[demandIndex]
 
       let minVehicle: Vehicle | undefined
       let minDistance = Infinity
 
       for (const vehicle of this.vehicles) {
-        if (vehicle.getCapacity() >= demand.getCapacity()) {
+        if (vehicle.capacity >= demand.capacity) {
           const lastDemand = vehicleRoutes.getVehicleLastDemand(vehicle)
-          const currentDistance = vehicle.getCurrentPosition().distanceTo(demand.getLocation())
+          const currentDistance = vehicle.currentPosition.distanceTo(demand.location)
           const totalDistance = (lastDemand != null)
-            ? lastDemand.getLocation().distanceTo(demand.getLocation())
+            ? lastDemand.location.distanceTo(demand.location)
             : currentDistance
 
           if (totalDistance < minDistance) {
@@ -87,13 +86,13 @@ export class DeliveryService {
         break
       }
 
-      minVehicle.setCapacity(minVehicle.getCapacity() - demand.getCapacity())
-      minVehicle.setCurrentPosition(demand.getLocation())
+      minVehicle.capacity = minVehicle.capacity - demand.capacity
+      minVehicle.currentPosition = demand.location
 
       const route = vehicleRoutes.getVehicleRoute(minVehicle)
       route.push(demand)
     }
 
-    return new DeliveryPlan(vehicleRoutes.routes, this.customerDemands.splice(dIndex))
+    return new DeliveryPlan(vehicleRoutes.routes, this.customerDemands.splice(demandIndex))
   }
 }

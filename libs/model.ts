@@ -24,70 +24,39 @@ export class Position {
 }
 
 export class CustomerDemand {
-  private readonly customerID: string
-  private readonly capacity: number
-  private readonly location: Position
-  private readonly orderId: string
-  private readonly dateTime: Date
-
-  constructor (customerID: string, capacity: number, location: Position, orderId: string, dateTime: Date) {
-    this.customerID = customerID
-    this.capacity = capacity
-    this.location = location
-    this.orderId = orderId
-    this.dateTime = dateTime
-  }
-
-  public getCustomerID (): string {
-    return this.customerID
-  }
-
-  public getCapacity (): number {
-    return this.capacity
-  }
-
-  public getLocation (): Position {
-    return this.location
-  }
-
-  public getOrderId (): string {
-    return this.orderId
-  }
-
-  public getDateTime (): Date {
-    return this.dateTime
+  constructor (
+    public readonly customerID: string,
+    public readonly capacity: number,
+    public readonly location: Position,
+    public readonly orderId: string,
+    public readonly dateTime: Date
+  ) {
   }
 }
 
 export class Vehicle {
-  private capacity: number
-  private currentPosition: Position
-  private readonly driverId: string
+  private _capacity: number
+  private _currentPosition: Position
 
-  constructor (capacity: number, currentPosition: Position, driverId: string) {
-    this.capacity = capacity
-    this.currentPosition = currentPosition
-    this.driverId = driverId
+  constructor (capacity: number, currentPosition: Position, public readonly driverId: string) {
+    this._capacity = capacity
+    this._currentPosition = currentPosition
   }
 
-  public getCapacity (): number {
-    return this.capacity
+  public get capacity (): number {
+    return this._capacity
   }
 
-  public setCapacity (capacity: number): void {
-    this.capacity = capacity
+  public set capacity (capacity: number) {
+    this._capacity = capacity
   }
 
-  public getCurrentPosition (): Position {
-    return this.currentPosition
+  public get currentPosition (): Position {
+    return this._currentPosition
   }
 
-  public setCurrentPosition (currentPosition: Position): void {
-    this.currentPosition = currentPosition
-  }
-
-  public getDriverId (): string {
-    return this.driverId
+  public set currentPosition (currentPosition: Position) {
+    this._currentPosition = currentPosition
   }
 }
 

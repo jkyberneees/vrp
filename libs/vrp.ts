@@ -1,4 +1,3 @@
-
 import { Vehicle, DeliveryOrder, DeliveryPlan, Position } from './model'
 import { FeatureCollection } from 'geojson'
 

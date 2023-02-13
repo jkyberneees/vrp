@@ -47,7 +47,7 @@ const routes = deliveryPlan.vehicleRoutes
 routes.forEach((route, vehicle) => {
   console.log(`Vehicle ID: ${vehicle.driverId}`)
   console.log(`Remaining vehicle capacity: ${vehicle.capacity}`)
-  console.log(`Current vehicle position: (${vehicle.currentPosition.latitude}, ${vehicle.currentPosition.longitude})`)
+  console.log(`Vehicle position after route: (${vehicle.currentPosition.latitude}, ${vehicle.currentPosition.longitude})`)
   console.log('Route:')
 
   const featureCollection: FeatureCollection = generateGeoJsonRoute(route.map(route => route.location))

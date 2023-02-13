@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <style>
+        #map {
+            width: 1200px;
+            height: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+
+</html>
+<script>
+    const featureCollection = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": [
+                        [
+                            13.334121232326096,
+                            52.50862360447317
+                        ],
+                        [
+                            13.332679791351262,
+                            52.50996972375546
+                        ],
+                        [
+                            13.334181321452734,
+                            52.510741403437265
+                        ],
+                        [
+                            13.333868911783417,
+                            52.50799619544591
+                        ],
+                        [
+                            13.333106879151796,
+                            52.50680358413776
+                        ],
+                        [
+                            13.334533397680364,
+                            52.51230746413982
+                        ],
+                        [
+                            13.331468720356074,
+                            52.50967428182284
+                        ],
+                        [
+                            13.333645207311532,
+                            52.512365549080165
+                        ],
+                        [
+                            13.334709742472137,
+                            52.50985657840235
+                        ],
+                        [
+                            13.331850059791995,
+                            52.50915835029562
+                        ],
+                        [
+                            13.333007860469221,
+                            52.50845479403461
+                        ],
+                        [
+                            13.332331419254965,
+                            52.50818015900949
+                        ],
+                        [
+                            13.334540458017663,
+                            52.51132370461141
+                        ],
+                        [
+                            13.334374993708472,
+                            52.50970854339496
+                        ],
+                        [
+                            13.331069342640388,
+                            52.51129473134383
+                        ],
+                        [
+                            13.33405371850131,
+                            52.51099983230259
+                        ],
+                        [
+                            13.333141832111743,
+                            52.50961229675546
+                        ],
+                        [
+                            13.331735757715197,
+                            52.51103632783908
+                        ],
+                        [
+                            13.334787430820047,
+                            52.511369187233576
+                        ],
+                        [
+                            13.333806676073744,
+                            52.51182675750636
+                        ],
+                        [
+                            13.332783808475762,
+                            52.51183289601907
+                        ]
+                    ]
+                }
+            }
+        ]
+    };
+
+    const map = L.map('map').setView([52.5056, 13.3275], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 18,
+    }).addTo(map);
+
+    const line = L.geoJSON(featureCollection).addTo(map);
+    map.fitBounds(line.getBounds());
+</script>

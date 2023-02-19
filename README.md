@@ -1,5 +1,6 @@
 # Getting started with the Vehicle Routing Problem (VRP) 
-> Please note that this project presents an heuristic and experimental solution to the Vehicle Routing Problem using TypeScript for educational purposes only. Use this solution at your own risk!
+> Please note that this project presents an heuristic and experimental solution to the Vehicle Routing Problem using TypeScript for educational purposes only.  
+Evaluate before use!
 
 ## Introduction
 <img src="illustration.svg" />

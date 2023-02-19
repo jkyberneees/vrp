@@ -1,6 +1,9 @@
 # Getting started with the Vehicle Routing Problem (VRP) 
+> Please note that this project presents an heuristic and experimental solution to the Vehicle Routing Problem using TypeScript for educational purposes only. Use this solution at your own risk!
 
 ## Introduction
+<img src="illustration.svg" />
+
 The Vehicle Routing Problem (VRP) is a classical optimization problem in the field of Operations Research. It involves finding the most efficient routes for a fleet of vehicles to deliver a set of customer orders. The objective is to minimize the total distance traveled by the vehicles while satisfying most orders.
 
 In this VRP model, we have defined several classes to represent the problem:

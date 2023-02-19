@@ -1,4 +1,6 @@
 # Getting started with the Vehicle Routing Problem (VRP) 
+> Explanatory medium post: https://medium.com/@kyberneees/a-pragmatic-educational-approach-to-the-vehicle-routing-problem-vrp-with-typescript-980ebe0c99d9
+
 > Please note that this project presents an heuristic and experimental solution to the Vehicle Routing Problem using TypeScript for educational purposes only.  
 Evaluate before use!
 

@@ -5,6 +5,9 @@ export class Position {
   ) {
   }
 
+  /**
+   * See: https://en.wikipedia.org/wiki/Haversine_formula
+   */
   distanceTo (other: Position): number {
     const earthRadius = 6371 // Earth's radius in kilometers
 

@@ -2,6 +2,7 @@ import { DeliveryService, generateGeoJsonRoute } from './../libs/vrp'
 import { Vehicle, Position, DeliveryOrder } from './../libs/model'
 import { FeatureCollection } from 'geojson'
 
+// Mock 5 vehicles around Berlin Kudam
 const vehicles = [
   new Vehicle('Vehicle1', 100, new Position(52.5075, 13.3295)),
   new Vehicle('Vehicle2', 120, new Position(52.5065, 13.3299)),
@@ -19,7 +20,7 @@ const orders = []
 let totalCapacity = 0
 let orderId = 1
 
-// Generating 100 DeliveryOrder objects
+// Mock 100 DeliveryOrder objects around Berlin Kudam
 while (orders.length < 100 && totalCapacity < totalVehicleCapacity) {
   const capacity = Math.floor(Math.random() * 20) + 1
   totalCapacity += capacity
